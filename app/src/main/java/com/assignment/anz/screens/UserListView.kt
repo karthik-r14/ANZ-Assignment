@@ -27,6 +27,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
@@ -76,7 +77,7 @@ fun UsersListScreen(
     LazyColumn(
         modifier = modifier, contentPadding = contentPadding
     ) {
-        items(successState.users, key = { it.id }) { user ->
+        items(successState.users, key = { it.id!! }) { user ->
             UserCard(
                 user,
                 modifier = Modifier
@@ -102,20 +103,14 @@ fun UserCard(user: User, modifier: Modifier) {
                 contentDescription = stringResource(R.string.user_profile_picture)
             )
 
-            Column(modifier = Modifier.padding(16.dp)) {
-                Text(
-                    text = user.name, style = MaterialTheme.typography.titleMedium
-                )
-                Text(
-                    text = user.email, style = MaterialTheme.typography.bodyMedium
-                )
-            }
+            val shortUserInfo = User(name = user.name, email = user.email)
+            RenderUserInfo(shortUserInfo, textStyle = MaterialTheme.typography.bodyMedium)
         }
     }
 }
 
 @Composable
-fun RenderPhoto(imageUrl: String, modifier: Modifier, contentDescription: String? = null) {
+fun RenderPhoto(imageUrl: String?, modifier: Modifier, contentDescription: String? = null) {
     AsyncImage(
         model = imageUrl,
         contentDescription = contentDescription,
@@ -124,6 +119,30 @@ fun RenderPhoto(imageUrl: String, modifier: Modifier, contentDescription: String
         placeholder = painterResource(R.drawable.circular_progress_bar),
         error = painterResource(R.drawable.ic_error)
     )
+}
+
+
+@Composable
+fun RenderUserInfo(user: User, textStyle: TextStyle) {
+    Column(modifier = Modifier.padding(16.dp)) {
+        with(user) {
+            id?.let { userId ->
+                Text(text = "User ID: $userId", style = textStyle)
+            }
+
+            name?.let { name ->
+                Text(text = "Name: $name", style = textStyle)
+            }
+
+            username?.let { userName ->
+                Text(text = "Username: $userName", style = textStyle)
+            }
+
+            email?.let { email ->
+                Text(text = "Email: $email", style = textStyle)
+            }
+        }
+    }
 }
 
 @Composable

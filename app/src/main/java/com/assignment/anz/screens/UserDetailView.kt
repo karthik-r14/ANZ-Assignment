@@ -15,7 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.assignment.anz.R
 import com.assignment.anz.model.User
 
 @Composable
@@ -36,13 +38,11 @@ fun UserDetailView(
             modifier = Modifier
                 .size(200.dp)
                 .clip(CircleShape),
-            contentDescription = "User profile picture",
+            contentDescription = stringResource(R.string.user_profile_picture)
         )
 
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Name: ${user.name}", style = MaterialTheme.typography.titleLarge)
-        Text(text = "Email: ${user.email}", style = MaterialTheme.typography.bodyLarge)
-        Text(text = "Username: ${user.username}", style = MaterialTheme.typography.bodyLarge)
+        RenderUserInfo(user = user, textStyle = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBack) {
             Text("Back to List")
