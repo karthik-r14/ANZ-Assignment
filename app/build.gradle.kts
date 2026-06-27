@@ -48,8 +48,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.ui)
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
+    implementation(libs.coil.compose)
+    implementation(libs.coil.network)
 
     // Retrofit
     implementation(libs.retrofit)
