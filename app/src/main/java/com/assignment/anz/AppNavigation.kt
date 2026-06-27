@@ -15,7 +15,7 @@ import kotlinx.serialization.Serializable
 object UserListRoute
 
 @Serializable
-data class UserDetailRoute(val userId: String)
+object UserDetailRoute
 
 @Composable
 fun AppNavigation() {
