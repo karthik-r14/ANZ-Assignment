@@ -45,7 +45,7 @@ fun UserDetailView(
         RenderUserInfo(user = user, textStyle = MaterialTheme.typography.bodyLarge)
         Spacer(modifier = Modifier.height(24.dp))
         Button(onClick = onBack) {
-            Text("Back to List")
+            Text(stringResource(R.string.back_to_list))
         }
     }
 }

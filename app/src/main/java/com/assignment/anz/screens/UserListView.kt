@@ -77,7 +77,7 @@ fun UsersListScreen(
     LazyColumn(
         modifier = modifier, contentPadding = contentPadding
     ) {
-        items(successState.users, key = { it.id!! }) { user ->
+        items(successState.users, key = { it.id }) { user ->
             UserCard(
                 user,
                 modifier = Modifier
@@ -103,7 +103,7 @@ fun UserCard(user: User, modifier: Modifier) {
                 contentDescription = stringResource(R.string.user_profile_picture)
             )
 
-            val shortUserInfo = User(name = user.name, email = user.email)
+            val shortUserInfo = User(id = user.id, name = user.name, email = user.email)
             RenderUserInfo(shortUserInfo, textStyle = MaterialTheme.typography.bodyMedium)
         }
     }
@@ -126,9 +126,8 @@ fun RenderPhoto(imageUrl: String?, modifier: Modifier, contentDescription: Strin
 fun RenderUserInfo(user: User, textStyle: TextStyle) {
     Column(modifier = Modifier.padding(16.dp)) {
         with(user) {
-            id?.let { userId ->
-                Text(text = stringResource(R.string.user_id, userId), style = textStyle)
-            }
+
+            Text(text = stringResource(R.string.user_id, id), style = textStyle)
 
             name?.let { name ->
                 Text(text = stringResource(R.string.name, name), style = textStyle)
