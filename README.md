@@ -1,3 +1,6 @@
+
+
+
 # ANZ Assignment
 
 This is an android application that demonstrates best practices in Android development, including Jetpack Compose, Hilt Dependency Injection, and MVVM architecture. The app fetches a list of users from a remote API and displays their details.
@@ -8,9 +11,7 @@ This is an android application that demonstrates best practices in Android devel
   <img src="app/src/main/res/drawable/app_screenshot_one.png" height="450" />
   <img src="app/src/main/res/drawable/app_screenshot_two.png" height="450" />
   <br><br>
-  <video src="app/src/main/res/drawable/ANZ_assignment_recording.mp4" height="450" controls>
-    <p>Your browser does not support the video tag. <a href="app/src/main/res/drawable/ANZ_assignment_recording.mp4">Click here to view the video file directly.</a></p>
-  </video>
+  <video src="https://github.com/user-attachments/assets/943b6ba3-dc87-4969-a061-ac8c9de08328" height="450" controls></video>
 </div>
 
 ## Features
