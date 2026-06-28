@@ -127,19 +127,31 @@ fun RenderUserInfo(user: User, textStyle: TextStyle) {
     Column(modifier = Modifier.padding(16.dp)) {
         with(user) {
             id?.let { userId ->
-                Text(text = "User ID: $userId", style = textStyle)
+                Text(text = stringResource(R.string.user_id, userId), style = textStyle)
             }
 
             name?.let { name ->
-                Text(text = "Name: $name", style = textStyle)
+                Text(text = stringResource(R.string.name, name), style = textStyle)
             }
 
             username?.let { userName ->
-                Text(text = "Username: $userName", style = textStyle)
+                Text(text = stringResource(R.string.username, userName), style = textStyle)
             }
 
             email?.let { email ->
-                Text(text = "Email: $email", style = textStyle)
+                Text(text = stringResource(R.string.email, email), style = textStyle)
+            }
+
+            address?.let { address ->
+                Text(text = stringResource(R.string.address, address), style = textStyle)
+            }
+
+            state?.let { state ->
+                Text(text = stringResource(R.string.state, state), style = textStyle)
+            }
+
+            country?.let { country ->
+                Text(text = stringResource(R.string.country, country), style = textStyle)
             }
         }
     }

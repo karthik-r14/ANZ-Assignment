@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">ANZ Assingment</string>
     <string name="user_profile_picture">User profile picture</string>
+    <string name="user_id">User ID: %1$d</string>
+    <string name="name">Name: %1$s</string>
+    <string name="username">Username: %1$s</string>
+    <string name="email">Email: %1$s</string>
+    <string name="address">Address: %1$s</string>
+    <string name="state">State: %1$s</string>
+    <string name="country">Country: %1$s</string>
 </resources>
