@@ -2,6 +2,7 @@ package com.assignment.anz.repository
 
 import com.assignment.anz.model.User
 import com.assignment.anz.network.UserApiService
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -14,6 +15,7 @@ class UserRepositoryImpl @Inject constructor(
             val users = apiService.getUsers()
             emit(Result.success(users))
         } catch (e: Exception) {
+            if (e is CancellationException) throw e
             emit(Result.failure(e))
         }
     }

@@ -5,17 +5,17 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.assignment.anz.di.IoDispatcher
 import com.assignment.anz.model.User
 import com.assignment.anz.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 sealed interface UserUiState {
     object Loading : UserUiState
@@ -25,7 +25,8 @@ sealed interface UserUiState {
 
 @HiltViewModel
 class UserViewModel @Inject constructor(
-    private val repository: UserRepository
+    private val repository: UserRepository,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow<UserUiState>(UserUiState.Loading)
@@ -45,7 +46,7 @@ class UserViewModel @Inject constructor(
     fun fetchUsers() {
         viewModelScope.launch {
             _uiState.value = UserUiState.Loading
-            repository.getUsers().flowOn(Dispatchers.IO).collect { result ->
+            repository.getUsers().flowOn(ioDispatcher).collect { result ->
                 _uiState.value = result.fold(
                     onSuccess = { UserUiState.Success(it) },
                     onFailure = { UserUiState.Error(it.message ?: "Unknown Error") })
