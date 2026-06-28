@@ -1,14 +1,17 @@
 # ANZ Assignment
 
-This is an Android application that demonstrates best practices in Android development, including Jetpack Compose, Hilt Dependency Injection, and MVVM architecture. The app fetches a list of users from a remote API and displays their details.
+This is an android application that demonstrates best practices in Android development, including Jetpack Compose, Hilt Dependency Injection, and MVVM architecture. The app fetches a list of users from a remote API and displays their details.
 
 ## Screenshots & Video Demo
 
-<p align="center">
+<div align="center">
   <img src="app/src/main/res/drawable/app_screenshot_one.png" height="450" />
   <img src="app/src/main/res/drawable/app_screenshot_two.png" height="450" />
-  <video src="app/src/main/res/drawable/ANZ_assignment_recording.mp4" height="450" controls />
-</p>
+  <br><br>
+  <video src="app/src/main/res/drawable/ANZ_assignment_recording.mp4" height="450" controls>
+    <p>Your browser does not support the video tag. <a href="app/src/main/res/drawable/ANZ_assignment_recording.mp4">Click here to view the video file directly.</a></p>
+  </video>
+</div>
 
 ## Features
 
@@ -46,7 +49,7 @@ The project includes unit tests for core business logic:
 - **ViewModel Tests**: Verifies UI state transitions and user interactions using fake repositories and injected test dispatchers.
 
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 1. Clone the repository.
 2. Open the project in **Android Studio**.
